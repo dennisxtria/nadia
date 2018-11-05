@@ -1,4 +1,6 @@
 defmodule Nadia.Model.InlineQueryResult do
+  @moduledoc false
+
   @type t ::
           Nadia.Model.InlineQueryResult.Article.t()
           | Nadia.Model.InlineQueryResult.Photo.t()
@@ -21,6 +23,10 @@ defmodule Nadia.Model.InlineQueryResult do
           | Nadia.Model.InlineQueryResult.CachedAudio
 
   defmodule Article do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "article",
               id: nil,
               title: nil,
@@ -33,7 +39,7 @@ defmodule Nadia.Model.InlineQueryResult do
               thumb_width: nil,
               thumb_height: nil
 
-    @type t :: %Article{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             input_message_content: InputMessageContent.t(),
@@ -49,6 +55,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Photo do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "photo",
               id: nil,
               photo_url: nil,
@@ -61,7 +71,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %Photo{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             photo_url: binary,
@@ -77,6 +87,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Gif do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "gif",
               id: nil,
               gif_url: nil,
@@ -89,7 +103,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %Gif{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             gif_url: binary,
@@ -105,6 +119,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Mpeg4Gif do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "mpeg4_gif",
               id: nil,
               mpeg4_url: nil,
@@ -117,7 +135,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %Mpeg4Gif{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             mpeg4_url: binary,
@@ -133,6 +151,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Video do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "video",
               id: nil,
               video_url: nil,
@@ -147,7 +169,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %Video{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             video_url: binary,
@@ -165,6 +187,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Audio do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "audio",
               id: nil,
               audio_url: nil,
@@ -174,7 +200,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %Audio{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             audio_url: binary,
@@ -187,6 +213,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Voice do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "voice",
               id: nil,
               voice_url: nil,
@@ -195,7 +225,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %Voice{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             voice_url: binary,
@@ -207,6 +237,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Document do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "document",
               id: nil,
               title: nil,
@@ -220,7 +254,7 @@ defmodule Nadia.Model.InlineQueryResult do
               thumb_width: nil,
               thumb_height: nil
 
-    @type t :: %Document{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             title: binary,
@@ -237,6 +271,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Location do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "location",
               id: nil,
               latitude: nil,
@@ -248,7 +286,7 @@ defmodule Nadia.Model.InlineQueryResult do
               thumb_width: nil,
               thumb_height: nil
 
-    @type t :: %Location{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             latitude: float,
@@ -263,6 +301,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Venue do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "venue",
               id: nil,
               latitude: nil,
@@ -276,7 +318,7 @@ defmodule Nadia.Model.InlineQueryResult do
               thumb_width: nil,
               thumb_height: nil
 
-    @type t :: %Venue{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             latitude: float,
@@ -293,6 +335,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule Contact do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "contact",
               id: nil,
               phone_number: nil,
@@ -304,7 +350,7 @@ defmodule Nadia.Model.InlineQueryResult do
               thumb_width: nil,
               thumb_height: nil
 
-    @type t :: %Contact{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             phone_number: binary,
@@ -319,6 +365,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule CachedPhoto do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "photo",
               id: nil,
               photo_file_id: nil,
@@ -328,7 +378,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %CachedPhoto{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             photo_file_id: binary,
@@ -341,6 +391,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule CachedGif do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "gif",
               id: nil,
               gif_file_id: nil,
@@ -349,7 +403,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %CachedGif{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             gif_file_id: binary,
@@ -361,6 +415,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule CachedMpeg4Gif do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "mpeg4_gif",
               id: nil,
               mpeg4_file_id: nil,
@@ -369,7 +427,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %CachedMpeg4Gif{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             mpeg4_file_id: binary,
@@ -381,13 +439,17 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule CachedSticker do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "sticker",
               id: nil,
               sticker_file_id: nil,
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %CachedSticker{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             sticker_file_id: binary,
@@ -397,6 +459,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule CachedDocument do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "document",
               id: nil,
               title: nil,
@@ -406,7 +472,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %CachedDocument{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             title: binary,
@@ -419,6 +485,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule CachedVideo do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "video",
               id: nil,
               video_file_id: nil,
@@ -428,7 +498,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %CachedVideo{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             video_file_id: binary,
@@ -441,6 +511,10 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule CachedVoice do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "voice",
               id: nil,
               voice_file_id: nil,
@@ -448,7 +522,7 @@ defmodule Nadia.Model.InlineQueryResult do
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %CachedVoice{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             voice_file_id: binary,
@@ -459,13 +533,17 @@ defmodule Nadia.Model.InlineQueryResult do
   end
 
   defmodule CachedAudio do
+    @moduledoc false
+
+    alias Nadia.Model.{InlineKeyboardMarkup, InputMessageContent}
+
     defstruct type: "audio",
               id: nil,
               audio_file_id: nil,
               reply_markup: nil,
               input_message_content: nil
 
-    @type t :: %CachedAudio{
+    @type t :: %__MODULE__{
             type: binary,
             id: binary,
             audio_file_id: binary,

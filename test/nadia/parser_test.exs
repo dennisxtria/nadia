@@ -4,14 +4,14 @@ defmodule Nadia.ParserTest do
   alias Nadia.Parser
 
   alias Nadia.Model.{
-    Update,
-    InlineQuery,
     CallbackQuery,
     ChosenInlineResult,
-    User,
-    PhotoSize,
-    UserProfilePhotos,
+    InlineQuery,
     Message,
+    PhotoSize,
+    Update,
+    User,
+    UserProfilePhotos,
     WebhookInfo
   }
 

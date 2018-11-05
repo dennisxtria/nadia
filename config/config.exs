@@ -1,5 +1,3 @@
-# This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
 config :nadia,
@@ -11,11 +9,11 @@ config :nadia,
   # proxy: {:system, "https_proxy"}
   recv_timeout: 10
 
-  # If the need ever rises, you can configure the base url for the api
-  # Telegram API
-  #base_url: "http://my-own-endpoint.com/whatever/",
-  # Telegram Graph API
-  #graph_base_url: "http://my-own-endpoint.com/whatever/"
+# If the need ever rises, you can configure the base url for the api
+# Telegram API
+# base_url: "http://my-own-endpoint.com/whatever/",
+# Telegram Graph API
+# graph_base_url: "http://my-own-endpoint.com/whatever/"
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this

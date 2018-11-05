@@ -6,7 +6,7 @@ defmodule Nadia.Graph do
   http://telegra.ph/api
   """
 
-  alias Nadia.Graph.Model.{Account, Error}
+  alias Nadia.Graph.Model.{Account, Error, Page, PageList, PageViews}
 
   import Nadia.Graph.API
 
@@ -21,7 +21,7 @@ defmodule Nadia.Graph do
   Options:
   * `:author_url` - default profile link, opened when users click on the author's name below the title. Can be any link, not necessarily to a Telegram profile or channel. 0-512 characters
   """
-  @spec create_account(binary, binary, [{atom, any}]) :: {:ok, Account.t()} | {:error, Error.t()}
+  @spec create_account(binary, binary, [{atom, term}]) :: {:ok, Account.t()} | {:error, Error.t()}
   def create_account(short_name, author_name, options \\ []) do
     request("createAccount", [short_name: short_name, author_name: author_name] ++ options)
   end
@@ -37,7 +37,7 @@ defmodule Nadia.Graph do
   Options:
   * `:author_url` - new default profile link, opened when users click on the author's name below the title. Can be any link, not necessarily to a Telegram profile or channel. 0-512 characters
   """
-  @spec edit_account_info(binary, binary, binary, [{atom, any}]) ::
+  @spec edit_account_info(binary, binary, binary, [{atom, term}]) ::
           {:ok, Account.t()} | {:error, Error.t()}
   def edit_account_info(access_token, short_name, author_name, options \\ []) do
     request(
@@ -93,7 +93,7 @@ defmodule Nadia.Graph do
   * `:author_url` - (String, 0-512 characters) Profile link, opened when users click on the author's name below the title. Can be any link, not necessarily to a Telegram profile or channel.
   * `:return_content` - (Boolean, default = false) If true, a content field will be returned in the Page object (see: Content format).
   """
-  @spec create_page(binary, binary, binary, [{atom, any}]) ::
+  @spec create_page(binary, binary, binary, [{atom, term}]) ::
           {:ok, Page.t()} | {:error, Error.t()}
   def create_page(access_token, title, content, options \\ []) do
     request("createPage", [access_token: access_token, title: title, content: content] ++ options)
@@ -113,7 +113,7 @@ defmodule Nadia.Graph do
   * `:author_url` - (String, 0-512 characters) Profile link, opened when users click on the author's * `:name below` - the title. Can be any link, not necessarily to a Telegram profile or channel.
   * `:return_content` - (Boolean, default = false) If true, a content field will be returned in the Page object.
   """
-  @spec edit_page(binary, binary, binary, binary, [{atom, any}]) ::
+  @spec edit_page(binary, binary, binary, binary, [{atom, term}]) ::
           {:ok, Page.t()} | {:error, Error.t()}
   def edit_page(access_token, path, title, content, options \\ []) do
     request(
@@ -145,7 +145,7 @@ defmodule Nadia.Graph do
   * `:day` - if passed, the number of page views for the requested day will be returned.
   * `:hour` - if passed, the number of page views for the requested hour will be returned.
   """
-  @spec get_views(binary, [{atom, any}]) :: {:ok, PageViews.t()} | {:error, Error.t()}
+  @spec get_views(binary, [{atom, term}]) :: {:ok, PageViews.t()} | {:error, Error.t()}
   def get_views(path, filter_fields) do
     request("getViews/" <> path, filter_fields)
   end

@@ -3,15 +3,16 @@ defmodule Nadia.Graph.API do
   Provides basic functionalities for Telegram Bot API.
   """
 
-  alias Nadia.Graph.Model.Error
   alias Nadia.Config
+  alias Nadia.Graph.Model.Error
+  alias Nadia.Graph.Parser
 
   defp build_url(method), do: Config.graph_base_url() <> "/" <> method
 
   defp process_response(response, method) do
     case decode_response(response) do
       {:ok, true} -> :ok
-      {:ok, result} -> {:ok, Nadia.Graph.Parser.parse_result(result, method)}
+      {:ok, result} -> {:ok, Parser.parse_result(result, method)}
       %{ok: false, description: description} -> {:error, %Error{reason: description}}
       {:error, %HTTPoison.Error{reason: reason}} -> {:error, %Error{reason: reason}}
     end

@@ -149,7 +149,7 @@ defmodule NadiaTest do
     file = %Nadia.Model.File{
       file_id: "BQADBQADBgADmEjsA1aqdSxtzvvVAg",
       file_path: "document/file_10",
-      file_size: 17680
+      file_size: 17_680
     }
 
     {:ok, file_link} = Nadia.get_file_link(file)

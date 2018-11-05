@@ -1,6 +1,7 @@
 defimpl Poison.Encoder, for: Nadia.Model.InlineKeyboardButton do
   def encode(button, options) do
-    Map.from_struct(button)
+    button
+    |> Map.from_struct()
     |> reject_nil
     |> Poison.Encoder.encode(options)
   end

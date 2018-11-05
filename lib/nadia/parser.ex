@@ -4,21 +4,21 @@ defmodule Nadia.Parser do
   """
 
   alias Nadia.Model.{
-    User,
+    Audio,
     Chat,
     ChatMember,
-    Message,
     ChatPhoto,
-    PhotoSize,
-    Audio,
-    Document,
-    Sticker,
-    InlineQuery,
     ChosenInlineResult,
+    Document,
+    InlineQuery,
+    Message,
+    PhotoSize,
+    Sticker,
+    User,
     WebhookInfo
   }
 
-  alias Nadia.Model.{Video, Voice, Contact, Location, Venue, Update, File, CallbackQuery}
+  alias Nadia.Model.{CallbackQuery, Contact, File, Location, Update, Venue, Video, Voice}
   alias Nadia.Model.UserProfilePhotos
 
   @doc """

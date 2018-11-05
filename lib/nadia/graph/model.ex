@@ -7,6 +7,8 @@ defmodule Nadia.Graph.Model do
   """
 
   defmodule Account do
+    @moduledoc false
+
     defstruct short_name: nil,
               author_name: nil,
               author_url: nil,
@@ -14,7 +16,7 @@ defmodule Nadia.Graph.Model do
               auth_url: nil,
               page_count: nil
 
-    @type t :: %Account{
+    @type t :: %__MODULE__{
             short_name: binary,
             author_name: binary,
             author_url: binary,
@@ -25,11 +27,19 @@ defmodule Nadia.Graph.Model do
   end
 
   defmodule PageList do
+    @moduledoc false
+
+    alias Nadia.Graph.Model.Page
+
     defstruct total_count: nil, pages: []
-    @type t :: %PageList{total_count: integer, pages: [[Page.t()]]}
+    @type t :: %__MODULE__{total_count: integer, pages: [[Page.t()]]}
   end
 
   defmodule Page do
+    @moduledoc false
+
+    alias Nadia.Graph.Model.NodeElement
+
     defstruct path: nil,
               url: nil,
               title: nil,
@@ -41,7 +51,7 @@ defmodule Nadia.Graph.Model do
               views: nil,
               can_edit: nil
 
-    @type t :: %Page{
+    @type t :: %__MODULE__{
             path: binary,
             url: binary,
             title: binary,
@@ -56,18 +66,24 @@ defmodule Nadia.Graph.Model do
   end
 
   defmodule PageViews do
+    @moduledoc false
+
     defstruct views: nil
-    @type t :: %PageViews{views: integer}
+    @type t :: %__MODULE__{views: integer}
   end
 
   defmodule NodeElement do
+    @moduledoc false
+
     defstruct tag: nil, attrs: [], children: []
-    @type t :: %NodeElement{tag: binary, attrs: [[any]], children: [[NodeElement.t()]]}
+    @type t :: %__MODULE__{tag: binary, attrs: [[term]], children: [[NodeElement.t()]]}
   end
 
   defmodule Error do
+    @moduledoc false
+
     defexception reason: nil
-    @type t :: %Error{reason: any}
+    @type t :: %__MODULE__{reason: term}
 
     def message(%Error{reason: reason}), do: inspect(reason)
   end

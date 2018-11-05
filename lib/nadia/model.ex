@@ -7,16 +7,22 @@ defmodule Nadia.Model do
   """
 
   defmodule User do
+    @moduledoc false
+
     defstruct id: nil, first_name: nil, last_name: nil, username: nil
-    @type t :: %User{id: integer, first_name: binary, last_name: binary, username: binary}
+    @type t :: %__MODULE__{id: integer, first_name: binary, last_name: binary, username: binary}
   end
 
   defmodule ChatPhoto do
+    @moduledoc false
+
     defstruct small_file_id: nil, big_file_id: nil
-    @type t :: %ChatPhoto{small_file_id: binary, big_file_id: binary}
+    @type t :: %__MODULE__{small_file_id: binary, big_file_id: binary}
   end
 
   defmodule Chat do
+    @moduledoc false
+
     defstruct id: nil,
               type: nil,
               title: nil,
@@ -25,7 +31,7 @@ defmodule Nadia.Model do
               last_name: nil,
               photo: nil
 
-    @type t :: %Chat{
+    @type t :: %__MODULE__{
             id: integer,
             type: binary,
             title: binary,
@@ -37,11 +43,15 @@ defmodule Nadia.Model do
   end
 
   defmodule PhotoSize do
+    @moduledoc false
+
     defstruct file_id: nil, width: nil, height: nil, file_size: nil
-    @type t :: %PhotoSize{file_id: binary, width: integer, height: integer, file_size: integer}
+    @type t :: %__MODULE__{file_id: binary, width: integer, height: integer, file_size: integer}
   end
 
   defmodule Audio do
+    @moduledoc false
+
     defstruct file_id: nil,
               duration: nil,
               performer: nil,
@@ -49,7 +59,7 @@ defmodule Nadia.Model do
               mime_type: nil,
               file_size: nil
 
-    @type t :: %Audio{
+    @type t :: %__MODULE__{
             file_id: binary,
             duration: integer,
             performer: binary,
@@ -60,9 +70,11 @@ defmodule Nadia.Model do
   end
 
   defmodule Document do
+    @moduledoc false
+
     defstruct file_id: nil, thumb: nil, file_name: nil, mime_type: nil, file_size: nil
 
-    @type t :: %Document{
+    @type t :: %__MODULE__{
             file_id: binary,
             thumb: PhotoSize.t(),
             file_name: binary,
@@ -72,9 +84,11 @@ defmodule Nadia.Model do
   end
 
   defmodule Sticker do
+    @moduledoc false
+
     defstruct file_id: nil, width: nil, height: nil, thumb: nil, emoji: nil, file_size: nil
 
-    @type t :: %Sticker{
+    @type t :: %__MODULE__{
             file_id: binary,
             width: integer,
             height: integer,
@@ -85,6 +99,8 @@ defmodule Nadia.Model do
   end
 
   defmodule Video do
+    @moduledoc false
+
     defstruct file_id: nil,
               width: nil,
               height: nil,
@@ -93,7 +109,7 @@ defmodule Nadia.Model do
               mime_type: nil,
               file_size: nil
 
-    @type t :: %Video{
+    @type t :: %__MODULE__{
             file_id: binary,
             width: integer,
             height: integer,
@@ -105,14 +121,24 @@ defmodule Nadia.Model do
   end
 
   defmodule Voice do
+    @moduledoc false
+
     defstruct file_id: nil, duration: nil, mime_type: nil, file_size: nil
-    @type t :: %Voice{file_id: binary, duration: integer, mime_type: binary, file_size: integer}
+
+    @type t :: %__MODULE__{
+            file_id: binary,
+            duration: integer,
+            mime_type: binary,
+            file_size: integer
+          }
   end
 
   defmodule Contact do
+    @moduledoc false
+
     defstruct phone_number: nil, first_name: nil, last_name: nil, user_id: nil
 
-    @type t :: %Contact{
+    @type t :: %__MODULE__{
             phone_number: binary,
             first_name: binary,
             last_name: binary,
@@ -121,14 +147,18 @@ defmodule Nadia.Model do
   end
 
   defmodule Location do
+    @moduledoc false
+
     defstruct latitude: nil, longitude: nil
-    @type t :: %Location{latitude: float, longitude: float}
+    @type t :: %__MODULE__{latitude: float, longitude: float}
   end
 
   defmodule Venue do
+    @moduledoc false
+
     defstruct location: nil, title: nil, address: nil, foursquare_id: nil
 
-    @type t :: %Venue{
+    @type t :: %__MODULE__{
             location: Location.t(),
             title: binary,
             address: binary,
@@ -137,6 +167,10 @@ defmodule Nadia.Model do
   end
 
   defmodule Message do
+    @moduledoc false
+
+    alias Nadia.Model.{Chat, MessageEntity}
+
     defstruct message_id: nil,
               from: nil,
               date: nil,
@@ -170,7 +204,7 @@ defmodule Nadia.Model do
               migrate_from_chat_id: nil,
               pinned_message: nil
 
-    @type t :: %Message{
+    @type t :: %__MODULE__{
             message_id: integer,
             from: User.t(),
             date: integer,
@@ -185,13 +219,13 @@ defmodule Nadia.Model do
             audio: Audio.t(),
             document: Document.t(),
             photo: [PhotoSize.t()],
-            sticker: any,
-            video: any,
-            voice: any,
+            sticker: term,
+            video: term,
+            voice: term,
             caption: binary,
-            contact: any,
-            location: any,
-            venue: any,
+            contact: term,
+            location: term,
+            venue: term,
             new_chat_member: User.t(),
             left_chat_member: User.t(),
             new_chat_title: binary,
@@ -207,9 +241,11 @@ defmodule Nadia.Model do
   end
 
   defmodule MessageEntity do
+    @moduledoc false
+
     defstruct type: nil, offset: nil, length: nil, url: nil, user: nil
 
-    @type t :: %MessageEntity{
+    @type t :: %__MODULE__{
             type: binary,
             offset: integer,
             length: integer,
@@ -219,9 +255,11 @@ defmodule Nadia.Model do
   end
 
   defmodule InlineQuery do
+    @moduledoc false
+
     defstruct id: nil, from: nil, location: nil, query: nil, offset: nil
 
-    @type t :: %InlineQuery{
+    @type t :: %__MODULE__{
             id: binary,
             from: User.t(),
             location: Location.t(),
@@ -231,9 +269,11 @@ defmodule Nadia.Model do
   end
 
   defmodule ChosenInlineResult do
+    @moduledoc false
+
     defstruct result_id: nil, from: nil, location: nil, inline_message_id: nil, query: nil
 
-    @type t :: %ChosenInlineResult{
+    @type t :: %__MODULE__{
             result_id: binary,
             from: User.t(),
             location: Location.t(),
@@ -243,6 +283,10 @@ defmodule Nadia.Model do
   end
 
   defmodule Update do
+    @moduledoc false
+
+    alias Nadia.Model.CallbackQuery
+
     defstruct update_id: nil,
               message: nil,
               edited_message: nil,
@@ -251,7 +295,7 @@ defmodule Nadia.Model do
               chosen_inline_result: nil,
               callback_query: nil
 
-    @type t :: %Update{
+    @type t :: %__MODULE__{
             update_id: integer,
             message: Message.t(),
             edited_message: Message.t(),
@@ -263,19 +307,27 @@ defmodule Nadia.Model do
   end
 
   defmodule UserProfilePhotos do
+    @moduledoc false
+
     defstruct total_count: nil, photos: []
-    @type t :: %UserProfilePhotos{total_count: integer, photos: [[PhotoSize.t()]]}
+    @type t :: %__MODULE__{total_count: integer, photos: [[PhotoSize.t()]]}
   end
 
   defmodule File do
+    @moduledoc false
+
     defstruct file_id: nil, file_size: nil, file_path: nil
-    @type t :: %File{file_id: binary, file_size: integer, file_path: binary}
+    @type t :: %__MODULE__{file_id: binary, file_size: integer, file_path: binary}
   end
 
   defmodule ReplyKeyboardMarkup do
+    @moduledoc false
+
+    alias Nadia.Model.KeyboardButton
+
     defstruct keyboard: [], resize_keyboard: false, one_time_keyboard: false, selective: false
 
-    @type t :: %ReplyKeyboardMarkup{
+    @type t :: %__MODULE__{
             keyboard: [[KeyboardButton.t()]],
             resize_keyboard: atom,
             one_time_keyboard: atom,
@@ -284,24 +336,34 @@ defmodule Nadia.Model do
   end
 
   defmodule KeyboardButton do
+    @moduledoc false
+
     defstruct text: nil, request_contact: false, request_location: false
-    @type t :: %KeyboardButton{text: binary, request_contact: atom, request_location: atom}
+    @type t :: %__MODULE__{text: binary, request_contact: atom, request_location: atom}
   end
 
   defmodule ReplyKeyboardHide do
+    @moduledoc false
+
     defstruct hide_keyboard: true, selective: false
-    @type t :: %ReplyKeyboardHide{hide_keyboard: true, selective: atom}
+    @type t :: %__MODULE__{hide_keyboard: true, selective: atom}
   end
 
   defmodule InlineKeyboardMarkup do
+    @moduledoc false
+
+    alias Nadia.Model.InlineKeyboardButton
+
     defstruct inline_keyboard: []
-    @type t :: %InlineKeyboardMarkup{inline_keyboard: [[InlineKeyboardButton.t()]]}
+    @type t :: %__MODULE__{inline_keyboard: [[InlineKeyboardButton.t()]]}
   end
 
   defmodule InlineKeyboardButton do
+    @moduledoc false
+
     defstruct text: nil, url: nil, callback_data: nil, switch_inline_query: nil
 
-    @type t :: %InlineKeyboardButton{
+    @type t :: %__MODULE__{
             text: binary,
             url: binary,
             callback_data: binary,
@@ -310,9 +372,11 @@ defmodule Nadia.Model do
   end
 
   defmodule CallbackQuery do
+    @moduledoc false
+
     defstruct id: nil, from: nil, message: nil, inline_message_id: nil, data: nil
 
-    @type t :: %CallbackQuery{
+    @type t :: %__MODULE__{
             id: binary,
             from: User.t(),
             message: Message.t(),
@@ -322,16 +386,22 @@ defmodule Nadia.Model do
   end
 
   defmodule ForceReply do
+    @moduledoc false
+
     defstruct force_reply: true, selective: false
-    @type t :: %ForceReply{force_reply: true, selective: atom}
+    @type t :: %__MODULE__{force_reply: true, selective: atom}
   end
 
   defmodule ChatMember do
+    @moduledoc false
+
     defstruct user: nil, status: nil
-    @type t :: %ChatMember{user: User.t(), status: binary}
+    @type t :: %__MODULE__{user: User.t(), status: binary}
   end
 
   defmodule WebhookInfo do
+    @moduledoc false
+
     defstruct url: nil,
               has_custom_certificate: nil,
               pending_update_count: nil,
@@ -340,7 +410,7 @@ defmodule Nadia.Model do
               max_connections: nil,
               allowed_updates: []
 
-    @type t :: %WebhookInfo{
+    @type t :: %__MODULE__{
             url: binary,
             has_custom_certificate: boolean,
             pending_update_count: non_neg_integer,
@@ -352,8 +422,10 @@ defmodule Nadia.Model do
   end
 
   defmodule Error do
+    @moduledoc false
+
     defexception reason: nil
-    @type t :: %Error{reason: any}
+    @type t :: %__MODULE__{reason: term}
 
     def message(%Error{reason: reason}), do: inspect(reason)
   end

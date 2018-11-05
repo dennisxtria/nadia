@@ -1,4 +1,6 @@
 defmodule Nadia.Config do
+  @moduledoc false
+
   @default_timeout 5
   @default_base_url "https://api.telegram.org/bot"
   @default_graph_base_url "https://api.telegra.ph"
